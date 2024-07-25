@@ -9,6 +9,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Quote API!');
+    });
+
 app.get('/api/quote', async (req, res) => {
   try {
     const response = await fetch('https://zenquotes.io/api/random');
