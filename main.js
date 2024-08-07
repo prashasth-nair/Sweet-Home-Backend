@@ -22,6 +22,15 @@ app.get('/api/quote', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+app.get('/api/image/random', async (req, res) => {
+  try {
+    const response = await fetch('https://picsum.photos/v2/list');
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
