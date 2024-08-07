@@ -22,9 +22,11 @@ app.get('/api/quote', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-app.get('/api/image/random', async (req, res) => {
+app.get('/api/image/list', async (req, res) => {
   try {
-    const response = await fetch('https://picsum.photos/v2/list');
+    // get query parameter
+    const page = req.query.page || 1;
+    const response = await fetch('https://picsum.photos/v2/list?page=' + page);
     const data = await response.json();
     res.json(data);
   } catch (error) {
